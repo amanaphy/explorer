@@ -217,4 +217,12 @@ Create user with read/write access:
 
 The mongodb site forgets to tell you to remove the mongodb-org-3.4.list, buyt it is necessary if you want to reinstall mongodb.
 
+------
+
+
+[IQUIDUS INSTRUCTIONS](https://github.com/mao-zedongx/explorer/blob/master/IQUIDUS_INSTRUCTIONS.md)
+
+
+-----
+
 
