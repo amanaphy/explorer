@@ -1,3 +1,7 @@
+mao
+===================
+
+
 Iquidus Explorer - 1.6.1
 ================
 
@@ -14,23 +18,25 @@ An open source block explorer written in node.js.
 
 ### Install some deps
 
-$ sudo apt-get install unzip git build-essential libssl-dev libboost-all-dev libqrencode-dev libdb++-dev libminiupnpc-dev qt-sdk -y
+    $ sudo apt-get install unzip git build-essential libssl-dev libboost-all-dev libqrencode-dev libdb++-dev libminiupnpc-dev qt-sdk -y
+    
+-----
 
-git clone mao
+**git clone mao**
 
-$ git clone https://github.com/mao-zedongx/mao-zedong.git
+    $ git clone https://github.com/mao-zedongx/mao-zedong.git
+    
+    $ cd mao-zedong/src
+    
+    $ make -f makefile.unix
 
-$ cd mao-zedong/src
+**Start maod**
 
-$ make -f makefile.unix
-
-Start maod
-
-$ ./maod
+    $ ./maod
 
 You get an error saying to make a .conf file. It will give you an rpcusername and rpcpassword. Copy paste them onto a text document.
 
-$ nano /root/.mao/mao.conf
+    $ nano /root/.mao/mao.conf
 
 // If you do not have **nano**
 
@@ -38,15 +44,15 @@ $ nano /root/.mao/mao.conf
 
 Make the mao.conf (you could use the exact details below, you do not need to use the ones given by the error message)
 
-rpcuser=maorpc
-rpcpassword=FeYNNEkueCMrdU7su9gtNQyaKeCQAR87fzRrjBkNxStS
-daemon=1
-server=1
-txindex=1
-rpcport=9669
+    rpcuser=maorpc
+    rpcpassword=FeYNNEkueCMrdU7su9gtNQyaKeCQAR87fzRrjBkNxStS
+    daemon=1
+    server=1
+    txindex=1
+    rpcport=9669
 
 
-- You can add nodes if you want - addnode=
+- **You can add nodes if you want - addnode=**
 
 Quit
 
@@ -54,7 +60,7 @@ Ctrl + X
 
 Leave mao for now
 
-$ cd (and press return button)
+    $ cd (and press return button)
 
 -------
 
@@ -64,9 +70,9 @@ $ cd (and press return button)
 
 node.js with PPA // **ignore depreciation messages**
 
-$ curl -sL https://deb.nodesource.com/setup | sudo bash -
-$ sudo apt-get install nodejs
-$ sudo apt-get install build-essential
+    $ curl -sL https://deb.nodesource.com/setup | sudo bash -
+    $ sudo apt-get install nodejs
+    $ sudo apt-get install build-essential
 
 -----
 
@@ -75,19 +81,19 @@ $ sudo apt-get install build-essential
 
 see also at: [mongodb](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/)
 
-$ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
+    $ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
 
-$ echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+    $ echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
 
-$ sudo apt-get update
-
-$ sudo apt-get install -y mongodb-org
+    $ sudo apt-get update
+    
+    $ sudo apt-get install -y mongodb-org
 
 
 -----
 
 
-Start mongodb:
+**Start mongodb**:
 
     $ mongo
 
@@ -100,22 +106,24 @@ Create user with read/write access:
     > db.createUser( { user: "iquidus", pwd: "3xp!0reR", roles: [ "readWrite" ] } )
 
 
-Croot
+**Croot**
 
-$ Ctrl + C
+    $ Ctrl + C
 
 ------
 
 ### Get the explorer source
+
+ 
 
     git clone https://github.com/mao-zedongx/explorer.git explorer
     
 
 ### Update
 
-$ cd explorer
-$ npm update
-$ cd (return)
+    $ cd explorer
+    $ npm update
+    $ cd (return)
 
 
 ### Install node modules
@@ -125,9 +133,9 @@ $ cd (return)
 
 ### Configure
 
-$ cd settings.json
+    $ cd settings.json
 
-*I have filled these in, so unless you change password or user for mongo, they are ready*
+**I have filled these in, so unless you change password or user for mongo, they are ready**
 
 **I have also put a mao favicon in the public folder, and mao logo in the images folder**
 
@@ -135,27 +143,33 @@ $ cd settings.json
 
 ### Start mao
 
-$ cd (return)
-$ cd mao-zedong/src
-$ ./maod
+    $ cd (return)
+    $ cd mao-zedong/src
+    $ ./maod
 
 -----
 
 ### cron
 
-$ cd (return)
+    $ cd (return)
+    
+    $ crontab-e
 
-$ crontab-e
+**Copy paste these into the cron at the bottom**:
 
-Copy paste these into the cron at the bottom:
-
- */1 * * * * cd /root/explorer && /usr/bin/nodejs scripts/sync.js index update > /dev/null 2>&1
- */2 * * * * cd /root/explorer && /usr/bin/nodejs scripts/sync.js market > /dev/null 2>&1
- */5 * * * * cd /root/explorer && /usr/bin/nodejs scripts/peers.js > /dev/null 2>&1
  
- Exit
+
+    */1 * * * * cd /root/explorer && /usr/bin/nodejs scripts/sync.js index update > /dev/null 2>&1
+     */2 * * * * cd /root/explorer && /usr/bin/nodejs scripts/sync.js market > /dev/null 2>&1
+     */5 * * * * cd /root/explorer && /usr/bin/nodejs scripts/peers.js > /dev/null 2>&1
+
  
- $ Ctrl + X
+ **Exit**
+ 
+ 
+
+    $ Ctrl + X
+
  
  
  -------
@@ -163,23 +177,24 @@ Copy paste these into the cron at the bottom:
 
 ### Start the explorer
 
-$ cd explorer
+    $ cd explorer
+    
+    $ screen -S explorer
+    $ npm start
+    $ Ctrl + A + D // to quit the running process
 
-$ screen -S explorer
-$ npm start
 
-$ Ctrl + A + D (to quit the running process)
 
-If you do not have **screen**
+**If you do not have** **screen**
 
-$ sudo apt-get install screen
+    $ sudo apt-get install screen
 
 ------
 
 
 
 
-**IQUIDUS BELOW**
+**IQUIDUS EXPLANATION BELOW**
 
 You can hopefully ignore all of it
 
