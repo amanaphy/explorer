@@ -49,7 +49,7 @@
     "host": "localhost",
     "port": 9669,
     "user": "maorpc",
-    "pass": "123gfjk3R3pCCVjHtbRde2s5kzdf233sa" // YOUR rpcpassword from mao.conf ******************************
+    "pass": "FeYNNEkueCMrdU7su9gtNQyaKeCQAR87fzRrjBkNxStS" // YOUR rpcpassword from mao.conf
   },
 
   // confirmations
